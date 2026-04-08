@@ -1,0 +1,77 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type NoteInput = 
+ record {
+   description: text;
+   file: ExternalBlob;
+   title: text;
+   topic: text;
+ };
+type NoteId = nat;
+type Note = 
+ record {
+   description: text;
+   file: ExternalBlob;
+   id: NoteId;
+   title: text;
+   topic: text;
+   uploadedAt: int;
+ };
+type LectureInput = 
+ record {
+   description: text;
+   title: text;
+   topic: text;
+   videoFile: ExternalBlob;
+ };
+type LectureId = nat;
+type Lecture = 
+ record {
+   description: text;
+   id: LectureId;
+   title: text;
+   topic: text;
+   uploadedAt: int;
+   videoFile: ExternalBlob;
+ };
+type ExternalBlob = blob;
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  deleteLecture: (id: LectureId) -> ();
+  deleteNote: (id: NoteId) -> ();
+  getCallerUserRole: () -> (UserRole) query;
+  getLecture: (id: LectureId) -> (opt Lecture) query;
+  getNote: (id: NoteId) -> (opt Note) query;
+  isCallerAdmin: () -> (bool) query;
+  listLectures: () -> (vec Lecture) query;
+  listNotes: () -> (vec Note) query;
+  uploadLecture: (input: LectureInput) -> (Lecture);
+  uploadNote: (input: NoteInput) -> (Note);
+}

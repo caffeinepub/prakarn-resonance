@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "Nunito", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.5rem;
+
+    --background: 0.985 0 0;
+    --foreground: 0.23 0.02 265;
+    --card: 0.98 0.01 252;
+    --card-foreground: 0.23 0.02 265;
+    --popover: 0.98 0.01 252;
+    --popover-foreground: 0.23 0.02 265;
+
+    --primary: 0.48 0.18 264;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.92 0.08 250;
+    --secondary-foreground: 0.25 0.05 264;
+    --muted: 0.92 0 0;
+    --muted-foreground: 0.55 0.02 265;
+
+    --accent: 0.62 0.22 58;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0.02 248;
+    --input: 0.88 0.02 248;
+    --ring: 0.48 0.18 264;
+
+    --chart-1: 0.48 0.18 264;
+    --chart-2: 0.62 0.22 58;
+    --chart-3: 0.7 0.15 200;
+    --chart-4: 0.55 0.22 25;
+    --chart-5: 0.45 0.12 180;
+
+    --sidebar: 0.96 0.01 252;
+    --sidebar-foreground: 0.23 0.02 265;
+    --sidebar-primary: 0.48 0.18 264;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.92 0.08 250;
+    --sidebar-accent-foreground: 0.25 0.05 264;
+    --sidebar-border: 0.88 0.02 248;
+    --sidebar-ring: 0.48 0.18 264;
+  }
+
+  .dark {
+    --background: 0.12 0.01 256;
+    --foreground: 0.93 0.02 250;
+    --card: 0.15 0.01 256;
+    --card-foreground: 0.93 0.02 250;
+    --popover: 0.18 0.01 256;
+    --popover-foreground: 0.93 0.02 250;
+
+    --primary: 0.65 0.2 264;
+    --primary-foreground: 0.12 0.01 256;
+
+    --secondary: 0.25 0.04 256;
+    --secondary-foreground: 0.85 0.05 250;
+    --muted: 0.25 0.01 256;
+    --muted-foreground: 0.6 0.02 265;
+
+    --accent: 0.7 0.24 58;
+    --accent-foreground: 0.12 0.01 256;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.12 0.01 256;
+
+    --border: 0.22 0.01 256;
+    --input: 0.22 0.01 256;
+    --ring: 0.65 0.2 264;
+
+    --chart-1: 0.65 0.2 264;
+    --chart-2: 0.7 0.24 58;
+    --chart-3: 0.75 0.16 200;
+    --chart-4: 0.65 0.19 22;
+    --chart-5: 0.6 0.14 180;
+
+    --sidebar: 0.15 0.01 256;
+    --sidebar-foreground: 0.93 0.02 250;
+    --sidebar-primary: 0.65 0.2 264;
+    --sidebar-primary-foreground: 0.12 0.01 256;
+    --sidebar-accent: 0.25 0.04 256;
+    --sidebar-accent-foreground: 0.85 0.05 250;
+    --sidebar-border: 0.22 0.01 256;
+    --sidebar-ring: 0.65 0.2 264;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-interactive {
+    @apply rounded-lg border border-border bg-card p-4 shadow-sm transition-smooth hover:shadow-md hover:border-primary/50;
+  }
+
+  .content-grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 font-display font-semibold text-primary-foreground transition-smooth hover:bg-primary/90 active:bg-primary/95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-4 py-2 font-display font-semibold text-secondary-foreground transition-smooth hover:bg-muted/40;
+  }
+}

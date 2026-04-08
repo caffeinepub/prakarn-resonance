@@ -1,0 +1,22 @@
+{
+  "overview": "Prakarn Resonance is an educational platform where the instructor uploads video lectures and notes, and students browse and view content in a searchable, topic-filtered library.",
+  "features": [
+    "Instructor upload dashboard for video lectures and PDF notes with progress feedback",
+    "Object storage integration for secure video and PDF file storage",
+    "Student content library with topic filters and search",
+    "Inline video player and PDF viewer for students",
+    "Role-based access: instructor-only upload, students view only",
+    "Delete and manage uploaded content from instructor dashboard"
+  ],
+  "category": "education",
+  "tags": [
+    "education",
+    "video-lectures",
+    "notes",
+    "e-learning",
+    "content-management",
+    "instructor",
+    "students"
+  ],
+  "last_updated": "2026-04-08T02:05:26.450Z"
+}

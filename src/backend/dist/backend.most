@@ -1,0 +1,54 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type ExternalBlob__246066408 = Blob;
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type LectureId__479431884 = Nat;
+type Lecture__292724791 =
+  {
+    description : Text;
+    id : LectureId__479431884;
+    title : Text;
+    topic : Text;
+    uploadedAt : Int;
+    videoFile : ExternalBlob__246066408
+  };
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type NoteId__913271276 = Nat;
+type Note__933322185 =
+  {
+    description : Text;
+    file : ExternalBlob__246066408;
+    id : NoteId__913271276;
+    title : Text;
+    topic : Text;
+    uploadedAt : Int
+  };
+type UserRole__1054455867 = {#admin; #guest; #user};
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable counters : {var nextLectureId : Nat; var nextNoteId : Nat};
+  stable lectures :
+    {
+      var root : Node__46230540<LectureId__479431884, Lecture__292724791>;
+      var size : Nat__490723111
+    };
+  stable notes :
+    {
+      var root : Node__46230540<NoteId__913271276, Note__933322185>;
+      var size : Nat__490723111
+    }
+};
